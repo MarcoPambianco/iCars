@@ -5,23 +5,20 @@ namespace iCars.Models.ValueTypes
     public class TipoIntervento
     {
 
-        public TipoIntervento(int id, string descrizione)
+        public TipoIntervento(int id, string descrizione, TipoScadenza tipoScadenza, int durata)
         {
             strDescrizione = descrizione;
             nId = id;
-            prossimoControllo = new Controllo(TipoScadenza.Kilometri, 0);
+            this.tipoScadenza = tipoScadenza;
+            this.durata = durata;
         }
 
-        public TipoIntervento(int id, string descrizione, Controllo contr)
-        {
-            nId = id;
-            strDescrizione = descrizione;
-            prossimoControllo = contr;
-        }
 
         public int nId { get; private set; }
         public string strDescrizione { get; private set; }
-        public Controllo prossimoControllo { get;private set; }
+
+        public TipoScadenza tipoScadenza { get; set; }
+        public int durata { get; set; }
 
 
         public void CambiaDescrizione(string strNewdescr) {
@@ -32,13 +29,5 @@ namespace iCars.Models.ValueTypes
             strDescrizione = strNewdescr;
         }
         
-        public void CambiaProssimoControllo(Controllo newControllo){
-            if (newControllo is null)
-            {
-                throw new InvalidOperationException("L'oggetto non può essere nullo");
-            }
-            prossimoControllo = newControllo;
-        }
-
     }
 }

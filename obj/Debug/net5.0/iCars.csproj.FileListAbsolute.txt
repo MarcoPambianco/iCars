@@ -39,3 +39,4 @@ C:\Users\marco\Desktop\.NET Core Sviluppo WEB\iCars\obj\Debug\net5.0\iCars.pdb
 C:\Users\marco\Desktop\.NET Core Sviluppo WEB\iCars\obj\Debug\net5.0\iCars.genruntimeconfig.cache
 C:\Users\marco\Desktop\.NET Core Sviluppo WEB\iCars\obj\Debug\net5.0\iCars.csproj.CopyComplete
 C:\Users\marco\Desktop\.NET Core Sviluppo WEB\iCars\obj\Debug\net5.0\Razor\Views\Parco\Index.cshtml.g.cs
+C:\Users\marco\Desktop\.NET Core Sviluppo WEB\iCars\obj\Debug\net5.0\Razor\Views\Parco\Interventi.cshtml.g.cs

@@ -5,23 +5,6 @@
 <br>
 <br>
 
-<div class="row parco-title">
-    <div class="col-md-2">
-        
-    </div>
-    <div class="col-md-2">
-        Targa
-    </div>
-    <div class="col-md-3">
-        Modello
-    </div>
-    <div class="col-md-2">
-       KM
-    </div>
-    <div class="col-md-3">
-        
-    </div>
-</div>
 
 @foreach (CarViewModel car in Model)
 {
@@ -40,8 +23,9 @@
        @car.Kilometri
     </div>
     <div class="col-md-3">
-        <button class="btn btn-warning" type="button">Interventi</button>
+        <a class="btn btn-warning" asp-controller="Parco" asp-action="Interventi" asp-route-strTarga="@car.strTarga">Interventi</a>
     </div>
 </div>
-}
+} 
+
 

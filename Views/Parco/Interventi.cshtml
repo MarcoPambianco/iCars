@@ -1,0 +1,35 @@
+@model CarDetailsViewModel;
+
+<section class="dettagli-macchina">
+    <div class="row">
+        <div class="col-md-9">
+            <h1>@Model.strModello</h1>
+        </div>
+        <div class="col-md-3 d-flex align-items-end">
+                <a href="#" class="btn btn-warning btn-lg btn-block add-intervento">Nuovo intervento</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-9">
+            <p style="text-align: justify;">
+                @foreach(InterventiViewModel intervento in @Model.lsInterventi){
+                <div class="row">
+                    <div class="col-md-4">@intervento.dataIntervento.ToString()</div>
+                    <div class="col-md-4">@intervento.tipoIntervento.strDescrizione</div>
+                    <div class="col-md-4">@intervento.kilometriMacchina</div>
+                </div>
+                <hr>
+            }                
+            </p>
+        </div>
+        <div class="col-md-3 d-flex align-items-end ">
+            <aside class="MyAside">
+                <img src="@Model.strImagePath" width="80">
+                <div>KM: @Model.Kilometri</div>
+                <div>Alimentazione: @Model.motorizzazione.alimentazione</div>
+                <div>Potenza: @Model.motorizzazione.cavalli (@Model.motorizzazione.kw)</div>
+            </aside>
+        </div>
+    </div>
+</section>
+

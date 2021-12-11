@@ -22,5 +22,12 @@ namespace iCars.Controllers
             return View(lsAuto);
         }
 
+        public IActionResult Interventi(string strTarga) {
+            
+            CarDetailsViewModel carDetails = parcoService.GetDettagliMacchina(strTarga);
+            
+            return View(carDetails);
+        }
+
     }
 }

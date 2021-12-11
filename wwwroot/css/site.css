@@ -31,9 +31,9 @@ html {
 }
 @media (min-width: 768px) {
   html {
-    font-size: 20px;
+    font-size: 16px;
   }
-}
+} 
 
 .border-top {
   border-top: 1px solid #e5e5e5;
@@ -81,4 +81,34 @@ body {
 
 hr {
   color: gray;
+}
+
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+
+.MyAside {
+  background-color: #e2e0e0;
+  padding: 1em;
+  height: 100%;
+  width: 100%;
+}
+
+.add-intervento {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+section {
+  margin-top: 2em;
 }

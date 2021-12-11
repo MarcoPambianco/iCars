@@ -5,6 +5,7 @@ namespace iCars.Models.ValueTypes
         public int cilindrata { get; set; }
         public int cavalli { get; set; }
         public int kw { get; set; }
+        public Carburante alimentazione { get; set; }
     }
 
     

@@ -15634,6 +15634,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\marco\\Desktop\\.NET Core Sviluppo WEB\\iCars\\Views\\Parco\\Interventi.cshtml",
+      "TargetPath": "Views\\Parco\\Interventi.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\marco\\Desktop\\.NET Core Sviluppo WEB\\iCars\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"

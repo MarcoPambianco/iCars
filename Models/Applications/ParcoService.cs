@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using iCars.Models.Interfaces;
 using iCars.Models.ValueTypes;
@@ -18,7 +19,7 @@ namespace iCars.Models.Applications
                 strMarca = Produttore.Ford,
                 strModello = "Puma 1.0 Hybrid STLine",
                 Kilometri = 9800,
-                strImagePath = "/Loghi/Ford.jpg"
+                strImagePath = "/Loghi/Ford.jpg",
             };
 
             lsAuto.Add(car1);
@@ -43,10 +44,12 @@ namespace iCars.Models.Applications
                 strMarca = Produttore.Ford,
                  strModello = "Puma 1.0 Hybrid STLine",
                 Kilometri = 9800,
+                strImagePath = "/Loghi/Ford.jpg",
                 motorizzazione = new EngineDetails {
                     cilindrata = 1000,
                     cavalli = 125,
-                    kw = 93
+                    kw = 93,
+                    alimentazione = Carburante.Ibrida_benzina
                 },
                 lsInterventi = new List<InterventiViewModel>()
             };
@@ -54,18 +57,22 @@ namespace iCars.Models.Applications
             InterventiViewModel int1 = new InterventiViewModel{
                 idIntervento = 1,
                 strDescr = "Cambio Olio 30000 km",
-                tipoIntervento = new TipoIntervento(1, "Cambio Olio", new Controllo(TipoScadenza.Kilometri, 30000)) 
+                tipoIntervento = new TipoIntervento(1, "Cambio olio motore", TipoScadenza.Kilometri, 25000),
+                kilometriMacchina = 9800,
+                dataIntervento = new DateTime(2021, 10, 01)
             };
             carDetails.lsInterventi.Add(int1);
 
             InterventiViewModel int2 = new InterventiViewModel{
                 idIntervento = 2,
                 strDescr = "Cambio Gomme estive",
-                tipoIntervento = new TipoIntervento(1, "Cambio Gomme", new Controllo(TipoScadenza.Kilometri, 45000)) 
+                tipoIntervento = new TipoIntervento(1, "Cambio gomme", TipoScadenza.Kilometri, 40000),
+                kilometriMacchina = 15000,
+                dataIntervento = new DateTime(2021, 11, 30)
             };
             carDetails.lsInterventi.Add(int2);
             
-            throw new System.NotImplementedException();
+            return carDetails;
         }
 
     }
