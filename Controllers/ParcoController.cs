@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using iCars.Models.Interfaces;
 using iCars.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -12,19 +13,19 @@ namespace iCars.Controllers
         {
             this.parcoService = parcoService;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             ViewBag.Title = "Parco macchine";
             
             // leggo l'elenco delle macchine del parco
-            List<CarViewModel> lsAuto = parcoService.GetParcoMacchine();
+            List<CarViewModel> lsAuto = await parcoService.GetParcoMacchine();
 
             return View(lsAuto);
         }
 
-        public IActionResult Interventi(string strTarga) {
+        public async Task<IActionResult> Interventi(string strTarga) {
             
-            CarDetailsViewModel carDetails = parcoService.GetDettagliMacchina(strTarga);
+            CarDetailsViewModel carDetails = await parcoService.GetDettagliMacchinaAsync(strTarga);
             
             return View(carDetails);
         }

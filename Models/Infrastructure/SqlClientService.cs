@@ -1,5 +1,6 @@
 using System.Data;
 using System.Data.SqlClient;
+using System.Threading.Tasks;
 using iCars.Models.Interfaces;
 
 
@@ -7,14 +8,14 @@ namespace iCars.Models.Infrastructure
 {
     public class SqlClientService : IDbParcoAccessor
     {
-        public DataSet GetDataFromQuery(string strQuery)
+        public async Task<DataSet> GetDataFromQueryAsync(string strQuery)
         {
             DataSet ds = new DataSet();
 
             using (var conn = new SqlConnection("Server=(local)\\sqlexpress;Database=iCars;Trusted_Connection=True")) {
-                conn.Open();
+                await conn.OpenAsync();
                 using (var sqlCommand = new SqlCommand(strQuery, conn)) {
-                    using(SqlDataReader reader = sqlCommand.ExecuteReader()){
+                    using(SqlDataReader reader = await sqlCommand.ExecuteReaderAsync()){
                         
                     while (!reader.IsClosed) {
 

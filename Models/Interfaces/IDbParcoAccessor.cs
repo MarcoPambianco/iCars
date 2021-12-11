@@ -1,4 +1,5 @@
 using System.Data;
+using System.Threading.Tasks;
 
 namespace iCars.Models.Interfaces
 {
@@ -6,6 +7,6 @@ namespace iCars.Models.Interfaces
     {
          string GetQueryCars();
          string GetQueryDetailsCar(string strTarga);
-         DataSet GetDataFromQuery(string strQuery);
+         Task<DataSet> GetDataFromQueryAsync(string strQuery);
     }
 }

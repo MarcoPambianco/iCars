@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Data;
+using System.Threading.Tasks;
 using iCars.Models.Infrastructure;
 using iCars.Models.Interfaces;
 using iCars.ViewModels;
@@ -15,10 +16,10 @@ namespace iCars.Models.Applications
             this.dbService = dbService;
         }
 
-        public List<CarViewModel> GetParcoMacchine()
+        public async Task<List<CarViewModel>> GetParcoMacchine()
         {
             string query = dbService.GetQueryCars();
-            DataSet dsParco = dbService.GetDataFromQuery(query);
+            DataSet dsParco = await dbService.GetDataFromQueryAsync(query);
             if (dsParco.Tables.Count == 0)
             {
                 throw new InvalidExpressionException("Errore leggendo i dati del parco");
@@ -34,11 +35,11 @@ namespace iCars.Models.Applications
             return parco;
         }
 
-        public CarDetailsViewModel GetDettagliMacchina(string strTarga)
+        public async Task<CarDetailsViewModel> GetDettagliMacchinaAsync(string strTarga)
         {
 
             string query = dbService.GetQueryDetailsCar(strTarga);
-            DataSet ds = dbService.GetDataFromQuery(query);
+            DataSet ds = await dbService.GetDataFromQueryAsync(query);
             if (ds.Tables.Count == 0)
             {
                 throw new InvalidExpressionException("Errore leggendo i dati del parco");
