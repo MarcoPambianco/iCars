@@ -43,9 +43,18 @@ namespace iCars.Models.Applications
             {
                 throw new InvalidExpressionException("Errore leggendo i dati del parco");
             }
-            
+            DataTable dttCar = ds.Tables[0];
+            DataTable dttInterventi = ds.Tables[1];
 
-             throw new System.NotImplementedException();
+            CarDetailsViewModel car = CarDetailsViewModel.FromDataRow(dttCar.Rows[0]);
+
+            foreach (DataRow dtr in dttInterventi.Rows)
+            {
+                InterventiViewModel intervento = InterventiViewModel.FromDataRow(dtr);
+                car.lsInterventi.Add(intervento);
+            }
+
+             return car;
         }
     }
 }

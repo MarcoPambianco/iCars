@@ -37,8 +37,12 @@ namespace iCars.Models.Infrastructure
 
         public string GetQueryDetailsCar(string strTarga)
         {
-            string query = @"select paTarga, paMarca, paModello, paImagePath, paKilometri, paDataImmatricolazione, paDataAcquisto, 
-                             paNuova, paCilindrata, paCavalli, paKw, paAlimentazione from tabparco; select * from ";
+            string query = @$"select paTarga, paMarca, paModello, paImagePath, paKilometri, paDataImmatricolazione, paDataAcquisto, 
+                             paNuova, paCilindrata, paCavalli, paKw, paAlimentazione from tabparco where paTarga = '{strTarga}'; 
+                             SELECT tabinterventi.*, tabtipointervento.*
+                             FROM   tabinterventi INNER JOIN
+                                    tabtipointervento ON tabinterventi.inIdTipoIntervento = tabtipointervento.id
+                             WHERE inTarga = '{strTarga}'";
             return query;
         }
     }

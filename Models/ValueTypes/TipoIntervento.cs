@@ -7,8 +7,8 @@ namespace iCars.Models.ValueTypes
 
         public TipoIntervento(int id, string descrizione, TipoScadenza tipoScadenza, int durata)
         {
-            strDescrizione = descrizione;
             nId = id;
+            strDescrizione = descrizione;
             this.tipoScadenza = tipoScadenza;
             this.durata = durata;
         }
@@ -29,5 +29,18 @@ namespace iCars.Models.ValueTypes
             strDescrizione = strNewdescr;
         }
         
+        public override string ToString() {
+            
+            string scadenza = "";
+            if (tipoScadenza == TipoScadenza.Kilometri)
+            {
+                scadenza = "Km";
+            } else {
+                scadenza = Convert.ToString(tipoScadenza);
+            }
+            string strTipoIntervento = scadenza + " " + Convert.ToString(durata);
+
+            return strTipoIntervento;
+        }
     }
 }
