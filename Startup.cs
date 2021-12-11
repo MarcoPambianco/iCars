@@ -1,6 +1,7 @@
 using iCars.Models.Applications;
 using iCars.Models.Infrastructure;
 using iCars.Models.Interfaces;
+using iCars.Models.Options;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -29,6 +30,9 @@ namespace iCars
             services.AddTransient<IParcoService, AdoNetParcoService>();
             services.AddTransient<IDbParcoAccessor, SqlClientService>();
 
+            // options
+            services.Configure<DatabaseOptions>(Configuration.GetSection("Database"));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,3 +60,4 @@ namespace iCars
         }
     }
 }
+

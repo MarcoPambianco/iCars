@@ -25,8 +25,8 @@ namespace iCars.Controllers
 
         public async Task<IActionResult> Interventi(string strTarga) {
             
+            // leggo i dettagli dell'auto e i relativi interventi
             CarDetailsViewModel carDetails = await parcoService.GetDettagliMacchinaAsync(strTarga);
-            
             return View(carDetails);
         }
 
