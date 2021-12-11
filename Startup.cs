@@ -1,4 +1,5 @@
 using iCars.Models.Applications;
+using iCars.Models.Infrastructure;
 using iCars.Models.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -25,7 +26,8 @@ namespace iCars
             });
             services.AddControllersWithViews();
 
-            services.AddTransient<IParcoService, ParcoService>();
+            services.AddTransient<IParcoService, AdoNetParcoService>();
+            services.AddTransient<IDbParcoAccessor, SqlClientService>();
 
         }
 
