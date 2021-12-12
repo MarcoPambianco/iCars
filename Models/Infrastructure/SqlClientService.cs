@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
@@ -15,8 +17,21 @@ namespace iCars.Models.Infrastructure
             this.databaseOptions = databaseOptions;
 
         }
-        public async Task<DataSet> GetDataFromQueryAsync(string strQuery)
+        public async Task<DataSet> GetDataFromQueryAsync(FormattableString formattableQuery)
         {
+            
+            var queryArgs = formattableQuery.GetArguments();
+            List<SqlParameter> lsParam = new List<SqlParameter>();
+            for (int i = 0; i < queryArgs.Length; i++)
+            {
+                SqlParameter par = new SqlParameter(i.ToString(), queryArgs[i]);
+                lsParam.Add(par);
+                queryArgs[i] = "@" + i;
+                
+            }
+                      
+            string strQuery = formattableQuery.ToString();
+
             DataSet ds = new DataSet();
 
             using (var conn = new SqlConnection(databaseOptions.CurrentValue.connectionString))
@@ -24,6 +39,11 @@ namespace iCars.Models.Infrastructure
                 await conn.OpenAsync();
                 using (var sqlCommand = new SqlCommand(strQuery, conn))
                 {
+                    foreach (SqlParameter par in lsParam)
+                    {
+                        sqlCommand.Parameters.Add(par);
+                    }
+
                     using (SqlDataReader reader = await sqlCommand.ExecuteReaderAsync())
                     {
 
@@ -41,21 +61,22 @@ namespace iCars.Models.Infrastructure
             return ds;
         }
 
-        public string GetQueryCars()
+
+        public FormattableString GetQueryCars()
         {
-            string query = "select paTarga, paMarca, paModello, paImagePath from tabparco;";
+            FormattableString query = $"select paTarga, paMarca, paModello, paImagePath from tabparco;";
             return query;
         }
 
-        public string GetQueryDetailsCar(string strTarga)
+        public FormattableString GetQueryDetailsCar(string strTarga)
         {
-            string query = @$"select paTarga, paMarca, paModello, paImagePath, paKilometri, paDataImmatricolazione, paDataAcquisto, 
-                             paNuova, paCilindrata, paCavalli, paKw, paAlimentazione from tabparco where paTarga = '{strTarga}' 
-                             order by paTarga ASC; 
-                             SELECT tabinterventi.*, tabtipointervento.*
-                             FROM   tabinterventi INNER JOIN
-                                    tabtipointervento ON tabinterventi.inIdTipoIntervento = tabtipointervento.id
-                             WHERE inTarga = '{strTarga}' order by inDataIntervento DESC";
+            FormattableString query = @$"select paTarga, paMarca, paModello, paImagePath, paKilometri, paDataImmatricolazione, paDataAcquisto, 
+                                        paNuova, paCilindrata, paCavalli, paKw, paAlimentazione from tabparco where paTarga = {strTarga}
+                                        order by paTarga ASC; 
+                                        SELECT tabinterventi.*, tabtipointervento.*
+                                        FROM   tabinterventi INNER JOIN
+                                        tabtipointervento ON tabinterventi.inIdTipoIntervento = tabtipointervento.id
+                                        WHERE inTarga = {strTarga} order by inDataIntervento DESC";
             return query;
         }
     }

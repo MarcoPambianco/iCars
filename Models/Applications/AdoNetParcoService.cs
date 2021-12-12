@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
@@ -18,7 +19,7 @@ namespace iCars.Models.Applications
 
         public async Task<List<CarViewModel>> GetParcoMacchine()
         {
-            string query = dbService.GetQueryCars();
+            FormattableString query = dbService.GetQueryCars();
             DataSet dsParco = await dbService.GetDataFromQueryAsync(query);
             if (dsParco.Tables.Count == 0)
             {
@@ -38,7 +39,7 @@ namespace iCars.Models.Applications
         public async Task<CarDetailsViewModel> GetDettagliMacchinaAsync(string strTarga)
         {
 
-            string query = dbService.GetQueryDetailsCar(strTarga);
+            FormattableString query = dbService.GetQueryDetailsCar(strTarga);
             DataSet ds = await dbService.GetDataFromQueryAsync(query);
             if (ds.Tables.Count == 0)
             {
