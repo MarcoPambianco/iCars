@@ -4,6 +4,7 @@ using iCars.Models.Interfaces;
 using iCars.Models.Options;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -31,12 +32,13 @@ namespace iCars
             services.AddMemoryCache();
             
 
-            services.AddTransient<ICachedParcoService, IMemoryCacheParcoService>();
+            services.AddTransient<ICachedParcoService, MemoryCacheParcoService>();
             services.AddTransient<IParcoService, AdoNetParcoService>();
             services.AddTransient<IDbParcoAccessor, SqlClientService>();
 
             // options
             services.Configure<DatabaseOptions>(Configuration.GetSection("Database"));
+            services.Configure<MemoryCacheOptions>(Configuration.GetSection("MemoryCache"));
             services.Configure<MyMemoryCacheOptions>(Configuration.GetSection("MyMemoryCache"));
 
 
@@ -57,12 +59,11 @@ namespace iCars
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
-
             app.UseAuthorization();
-
-            app.UseMvcWithDefaultRoute();
+            app.UseMvc(builder => {
+                builder.MapRoute("default", "{controller=Home}/{action=Index}/{strTarga?}");
+            });
             
         }
     }

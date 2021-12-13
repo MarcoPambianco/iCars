@@ -1,24 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\PAM_SW\\iCars\\iCars.csproj": {}
+    "C:\\Users\\marco\\Desktop\\.NET Core Sviluppo WEB\\iCars\\iCars.csproj": {}
   },
   "projects": {
-    "C:\\PAM_SW\\iCars\\iCars.csproj": {
+    "C:\\Users\\marco\\Desktop\\.NET Core Sviluppo WEB\\iCars\\iCars.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\PAM_SW\\iCars\\iCars.csproj",
+        "projectUniqueName": "C:\\Users\\marco\\Desktop\\.NET Core Sviluppo WEB\\iCars\\iCars.csproj",
         "projectName": "iCars",
-        "projectPath": "C:\\PAM_SW\\iCars\\iCars.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\PAM_SW\\iCars\\obj\\",
+        "projectPath": "C:\\Users\\marco\\Desktop\\.NET Core Sviluppo WEB\\iCars\\iCars.csproj",
+        "packagesPath": "C:\\Users\\marco\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\marco\\Desktop\\.NET Core Sviluppo WEB\\iCars\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\marco\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -66,7 +68,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.303\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     }

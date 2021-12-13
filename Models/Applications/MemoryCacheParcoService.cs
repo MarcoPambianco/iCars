@@ -9,16 +9,20 @@ using Microsoft.Extensions.Options;
 
 namespace iCars.Models.Applications
 {
-    public class IMemoryCacheParcoService : ICachedParcoService
+    public class MemoryCacheParcoService : ICachedParcoService
     {
         private readonly IMemoryCache memoryCache;
         private readonly IParcoService parcoService;
         private readonly IOptionsMonitor<MyMemoryCacheOptions> myCacheOptions;
-        public IMemoryCacheParcoService(IParcoService parcoService,
+        private readonly IOptionsMonitor<MemoryCacheOptions> memoryCacheOptions;
+
+        public MemoryCacheParcoService(IParcoService parcoService,
                                         IMemoryCache memoryCache,
-                                        IOptionsMonitor<MyMemoryCacheOptions> myCacheOptions)
+                                        IOptionsMonitor<MyMemoryCacheOptions> myCacheOptions,
+                                        IOptionsMonitor<MemoryCacheOptions> memoryCacheOptions)
         {
             this.myCacheOptions = myCacheOptions;
+            this.memoryCacheOptions = memoryCacheOptions;
             this.parcoService = parcoService;
             this.memoryCache = memoryCache;
 
@@ -26,9 +30,10 @@ namespace iCars.Models.Applications
         public async Task<List<CarViewModel>> GetParcoMacchineAsync()
         {
             string strKey = "Parco";
-            Task<List<CarViewModel>> lsParco = memoryCache.GetOrCreateAsync(strKey, entry =>
+            Task<List<CarViewModel>> lsParco = memoryCache.GetOrCreateAsync(strKey, cacheEntry =>
             {
-                entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(myCacheOptions.CurrentValue.SecondsToExpire);
+                cacheEntry.SetSize(1);
+                cacheEntry.SetAbsoluteExpiration(TimeSpan.FromSeconds(myCacheOptions.CurrentValue.SecondsToExpire));
                 return parcoService.GetParcoMacchineAsync();
             });
 
@@ -38,9 +43,10 @@ namespace iCars.Models.Applications
         {
             string strKey = $"macchina_{strTarga}";
 
-            Task<CarDetailsViewModel> car = memoryCache.GetOrCreateAsync(strKey, entry =>
+            Task<CarDetailsViewModel> car = memoryCache.GetOrCreateAsync(strKey, cacheEntry =>
             {
-                entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(myCacheOptions.CurrentValue.SecondsToExpire);
+                cacheEntry.SetSize(1);
+                cacheEntry.SetAbsoluteExpiration(TimeSpan.FromSeconds(myCacheOptions.CurrentValue.SecondsToExpire));
                 return parcoService.GetDettagliMacchinaAsync(strTarga);
             });
 
