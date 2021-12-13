@@ -5,21 +5,27 @@ using System.Threading.Tasks;
 using iCars.Models.Infrastructure;
 using iCars.Models.Interfaces;
 using iCars.ViewModels;
+using Microsoft.Extensions.Logging;
 
 namespace iCars.Models.Applications
 {
     public class AdoNetParcoService : IParcoService
     {
         private readonly IDbParcoAccessor dbService;
+        private readonly ILogger logger;
 
-        public AdoNetParcoService(IDbParcoAccessor dbService)
+        public AdoNetParcoService(IDbParcoAccessor dbService,
+                                  ILoggerFactory loggerFactory)
         {
+            this.logger = loggerFactory.CreateLogger("SERVIZIO ADO.NET PARCO MACCHINE");
             this.dbService = dbService;
         }
 
         public async Task<List<CarViewModel>> GetParcoMacchine()
         {
+            logger.LogInformation("Chiedo la query al servizio infrastrutturale");
             FormattableString query = dbService.GetQueryCars();
+            logger.LogInformation("Eseguo la query");
             DataSet dsParco = await dbService.GetDataFromQueryAsync(query);
             if (dsParco.Tables.Count == 0)
             {
@@ -56,7 +62,7 @@ namespace iCars.Models.Applications
                 car.lsInterventi.Add(intervento);
             }
 
-             return car;
+            return car;
         }
     }
 }

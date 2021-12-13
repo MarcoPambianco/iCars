@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Threading.Tasks;
 using iCars.Models.Interfaces;
 using iCars.Models.Options;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 namespace iCars.Models.Infrastructure
@@ -12,14 +13,17 @@ namespace iCars.Models.Infrastructure
     public class SqlClientService : IDbParcoAccessor
     {
         private readonly IOptionsMonitor<DatabaseOptions> databaseOptions;
-        public SqlClientService(IOptionsMonitor<DatabaseOptions> databaseOptions)
+        private readonly ILogger logger;
+        public SqlClientService(IOptionsMonitor<DatabaseOptions> databaseOptions,
+                                ILogger<SqlClientService> logger)
         {
+            this.logger = logger;
             this.databaseOptions = databaseOptions;
 
         }
         public async Task<DataSet> GetDataFromQueryAsync(FormattableString formattableQuery)
         {
-            
+
             var queryArgs = formattableQuery.GetArguments();
             List<SqlParameter> lsParam = new List<SqlParameter>();
             for (int i = 0; i < queryArgs.Length; i++)
@@ -27,11 +31,11 @@ namespace iCars.Models.Infrastructure
                 SqlParameter par = new SqlParameter(i.ToString(), queryArgs[i]);
                 lsParam.Add(par);
                 queryArgs[i] = "@" + i;
-                
-            }
-                      
-            string strQuery = formattableQuery.ToString();
 
+            }
+
+            string strQuery = formattableQuery.ToString();
+            logger.LogInformation(strQuery);
             DataSet ds = new DataSet();
 
             using (var conn = new SqlConnection(databaseOptions.CurrentValue.connectionString))

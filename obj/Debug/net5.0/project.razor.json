@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\Users\\marco\\Desktop\\.NET Core Sviluppo WEB\\iCars\\iCars.csproj",
+  "FilePath": "c:\\PAM_SW\\iCars\\iCars.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "5.0",
@@ -15619,48 +15619,48 @@
   "RootNamespace": "iCars",
   "Documents": [
     {
-      "FilePath": "c:\\Users\\marco\\Desktop\\.NET Core Sviluppo WEB\\iCars\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FilePath": "c:\\PAM_SW\\iCars\\Views\\Parco\\Index.cshtml",
+      "TargetPath": "Views\\Parco\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\marco\\Desktop\\.NET Core Sviluppo WEB\\iCars\\Views\\Shared\\_Layout.cshtml",
-      "TargetPath": "Views\\Shared\\_Layout.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\marco\\Desktop\\.NET Core Sviluppo WEB\\iCars\\Views\\Home\\Privacy.cshtml",
-      "TargetPath": "Views\\Home\\Privacy.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\marco\\Desktop\\.NET Core Sviluppo WEB\\iCars\\Views\\Parco\\Interventi.cshtml",
-      "TargetPath": "Views\\Parco\\Interventi.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\marco\\Desktop\\.NET Core Sviluppo WEB\\iCars\\Views\\_ViewImports.cshtml",
-      "TargetPath": "Views\\_ViewImports.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\marco\\Desktop\\.NET Core Sviluppo WEB\\iCars\\Views\\_ViewStart.cshtml",
-      "TargetPath": "Views\\_ViewStart.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\marco\\Desktop\\.NET Core Sviluppo WEB\\iCars\\Views\\Shared\\Error.cshtml",
+      "FilePath": "c:\\PAM_SW\\iCars\\Views\\Shared\\Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\marco\\Desktop\\.NET Core Sviluppo WEB\\iCars\\Views\\Home\\Index.cshtml",
+      "FilePath": "c:\\PAM_SW\\iCars\\Views\\Parco\\Interventi.cshtml",
+      "TargetPath": "Views\\Parco\\Interventi.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\PAM_SW\\iCars\\Views\\_ViewStart.cshtml",
+      "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\PAM_SW\\iCars\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\PAM_SW\\iCars\\Views\\Home\\Privacy.cshtml",
+      "TargetPath": "Views\\Home\\Privacy.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\PAM_SW\\iCars\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\marco\\Desktop\\.NET Core Sviluppo WEB\\iCars\\Views\\Parco\\Index.cshtml",
-      "TargetPath": "Views\\Parco\\Index.cshtml",
+      "FilePath": "c:\\PAM_SW\\iCars\\Views\\_ViewImports.cshtml",
+      "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\PAM_SW\\iCars\\Views\\Shared\\_Layout.cshtml",
+      "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
     }
   ],
