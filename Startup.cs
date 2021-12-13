@@ -37,6 +37,7 @@ namespace iCars
 
             // options
             services.Configure<DatabaseOptions>(Configuration.GetSection("Database"));
+            services.Configure<MyMemoryCacheOptions>(Configuration.GetSection("MyMemoryCache"));
 
 
         }
