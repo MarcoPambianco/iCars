@@ -6,7 +6,7 @@ namespace iCars.Models.Interfaces
 {
     public interface IParcoService
     {
-     Task<List<CarViewModel>> GetParcoMacchine();    
+     Task<List<CarViewModel>> GetParcoMacchineAsync();    
      Task<CarDetailsViewModel> GetDettagliMacchinaAsync(string strTarga);
     }
 }

@@ -10,8 +10,8 @@ namespace iCars.Controllers
     public class ParcoController : Controller
     {
         private readonly IParcoService parcoService;
-        private readonly ILogger logger;
-        public ParcoController(IParcoService parcoService, ILogger logger)
+        private readonly ILogger<ParcoController>  logger;
+        public ParcoController(ICachedParcoService parcoService, ILogger<ParcoController> logger)
         {
             this.logger = logger;
             this.parcoService = parcoService;
@@ -21,7 +21,7 @@ namespace iCars.Controllers
             ViewBag.Title = "Parco macchine";
 
             // leggo l'elenco delle macchine del parco
-            List<CarViewModel> lsAuto = await parcoService.GetParcoMacchine();
+            List<CarViewModel> lsAuto = await parcoService.GetParcoMacchineAsync();
 
             return View(lsAuto);
         }

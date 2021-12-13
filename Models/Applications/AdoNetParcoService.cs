@@ -12,16 +12,16 @@ namespace iCars.Models.Applications
     public class AdoNetParcoService : IParcoService
     {
         private readonly IDbParcoAccessor dbService;
-        private readonly ILogger logger;
+        private readonly ILogger<AdoNetParcoService> logger;
 
         public AdoNetParcoService(IDbParcoAccessor dbService,
-                                  ILoggerFactory loggerFactory)
+                                  ILogger<AdoNetParcoService> logger)
         {
-            this.logger = loggerFactory.CreateLogger("SERVIZIO ADO.NET PARCO MACCHINE");
+            this.logger = logger;
             this.dbService = dbService;
         }
 
-        public async Task<List<CarViewModel>> GetParcoMacchine()
+        public async Task<List<CarViewModel>> GetParcoMacchineAsync()
         {
             logger.LogInformation("Chiedo la query al servizio infrastrutturale");
             FormattableString query = dbService.GetQueryCars();

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace iCars
 {
@@ -27,6 +28,10 @@ namespace iCars
             });
             services.AddControllersWithViews();
 
+            services.AddMemoryCache();
+            
+
+            services.AddTransient<ICachedParcoService, IMemoryCacheParcoService>();
             services.AddTransient<IParcoService, AdoNetParcoService>();
             services.AddTransient<IDbParcoAccessor, SqlClientService>();
 
